@@ -1,4 +1,20 @@
+// Add event listener for keypress event on the document
+document.addEventListener("keypress", function(event) {
+  // Check if the pressed key is Enter
+  if (event.key === "Enter") {
+    // Call the handleSubmit function
+    handleSubmit();
+  }
+});
+
+// Add click event listener for the submit button
 document.getElementById("submit").addEventListener("click", function() {
+  // Call the handleSubmit function
+  handleSubmit();
+});
+
+// Define handleSubmit function to handle the form submission
+function handleSubmit() {
   const n = parseInt(document.getElementById("nInput").value);
   const headID = parseInt(document.getElementById("headIDInput").value);
   const managerInput = document.getElementById("managerInput").value;
@@ -6,12 +22,15 @@ document.getElementById("submit").addEventListener("click", function() {
   const informTimeInput = document.getElementById("informTimeInput").value;
   const informTime = informTimeInput.split(",").map(Number);
 
+  // Calculate the result
   const result = numOfMinutes(n, headID, manager, informTime);
 
+  // Display the result in the output element
   document.getElementById("output").innerText =
     "Time needed to inform all employees: " + result;
-});
+}
 
+// Define the numOfMinutes function to perform the calculation
 const numOfMinutes = function(n, headID, manager, informTime) {
   const map = {};
 
